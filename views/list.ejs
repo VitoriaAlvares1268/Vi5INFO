@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista Dos Alunos</title>
+    <style>
+        table, tr, td{
+            border: solid 1px black;
+        }
+        th{
+            border: solid 4px black;
+        }
+        td, th{
+            padding: 5px;
+            text-align: center;
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+
+    </style>
+
+</head>
+    
+<body>
+    <form method="GET">
+        Pesquisa: <input type="text" name="txtPesquisa"><br>
+        <input type="submit" value="Pesquisar">
+    </form>
+    <p><a href="/add">Adicionar Alunos</a></p>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Nome</th>
+            <th>Email</th>
+            <th>Telefone</th>
+            <th>Editar</th>
+            <th>Deletar</th>
+            <tr>
+                <td>1</td>
+                <td>Vitória</td>
+                <td>Vihlopes423@gmail.com</td>
+                <td>0000000000</td>
+                <td>Editar</td>
+                <td>Deletar</td>
+            </tr>
+        
+        </tr>
+    </table>
+    
+</body>
+</html>
