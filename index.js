@@ -12,6 +12,13 @@ app.use(bodyParser.urlencoded({extended:false}))
 app.set('view engine', "ejs")
 app.use(express.static(path.join(__dirname,"public")))
 
+app.get('/addi',function(req,res){
+    res.render('adiciona.ejs', {})
+}) 
+app.post('/addi',function(req,res){
+    console.log("Nome: " + req.body.txtNome + "  Email: "+ req.body.txtEmail)
+}) 
+
 app.get('/i',function(req,res){
     res.render('index.ejs', {})
 }) 
