@@ -3,6 +3,7 @@ const app = express ()
 var bodyParser = require ('body-parser')
 var cookieParser = require ('cookie-parser')
 var path = require ('path')
+var UsuarioModel = require("./model/usuario")
 
 app.use(cookieParser())
 
@@ -19,21 +20,12 @@ app.post('/addi',function(req,res){
     console.log("Nome: " + req.body.txtNome + "  Email: "+ req.body.txtEmail)
 }) 
 
-app.get('/i',function(req,res){
+app.get('/',function(req,res){
     res.render('index.ejs', {})
-}) 
-app.get('/usuarios',function(req,res){
-        res.render('usuarios.ejs',{usuarios:[
-            {nome:'Vitória', email:'Vihlopes@gmail.com' },
-            {nome:'Mariana', email:'Marigomes@gmail.com' },
-            {nome:'Eduarda', email:'Eduardafarias@gmail.com' },
-            {nome:'Luciana', email:'Lucianaluiz@gmail.com' }
-
-        ]})
 }) 
 
 //Listar todos os dados
-app.get('/',function(req,res){
+app.get('/l',function(req,res){
     res.render('list.ejs')
 }) 
 
@@ -44,11 +36,26 @@ app.post('/',function(req,res){
 
 // Abrir tela add
 app.get('/add',function(req,res){
-    res.render('add.ejs')
+    res.render('adiciona.ejs')
 })
-// Salvvardados adicionados no banco  de dados
+// Salvando dados adicionados no banco  de dados
 app.post('/add',function(req,res){
-    res.render('add.ejs')
+   let usuario = new UsuarioModel({
+       nome:req.body.txtNome,
+       email:req.body.txtEmail,
+       senha:req.body.txtSenha,
+       foto:req.body.txtFoto,  
+
+   })
+   usuario.save(function(err) {
+       if(err){
+    console.log(err)
+
+       }else {
+    res.redirect("/");
+       }
+       
+   })
 })
 
 // Abrir tela add
